@@ -87,7 +87,7 @@ def do_web_update(env):
 	template0 = read_conf("nginx.conf")
 	template1 = read_conf("nginx-alldomains.conf")
 	template2 = read_conf("nginx-primaryonly.conf")
-	template3 = "\trewrite ^(.*) https://$REDIRECT_DOMAIN$1 permanent;\n"
+	template3 = "\trewrite ^(.*) https://$REDIRECT_DOMAIN$1 redirect;\n"
 
 	# Add the PRIMARY_HOST configuration first so it becomes nginx's default server.
 	nginx_conf += make_domain_config(env['PRIMARY_HOSTNAME'], [template0, template1, template2], ssl_certificates, env)
